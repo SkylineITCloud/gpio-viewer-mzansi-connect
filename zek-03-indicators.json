@@ -1,0 +1,90 @@
+{
+  "pins": [
+    {
+      "gpioid": 3,
+      "top": 26.122448979591837,
+      "left": 27.857142857142858,
+      "valueJustify": -1
+    },
+    {
+      "gpioid": 4,
+      "top": 33.06122448979592,
+      "left": 27.857142857142858,
+      "valueJustify": -1
+    },
+    {
+      "gpioid": 5,
+      "top": 40.0,
+      "left": 27.857142857142858,
+      "valueJustify": -1
+    },
+    {
+      "gpioid": 6,
+      "top": 46.93877551020408,
+      "left": 27.857142857142858,
+      "valueJustify": -1
+    },
+    {
+      "gpioid": 7,
+      "top": 53.87755102040816,
+      "left": 27.857142857142858,
+      "valueJustify": -1
+    },
+    {
+      "gpioid": 8,
+      "top": 60.816326530612244,
+      "left": 27.857142857142858,
+      "valueJustify": -1
+    },
+    {
+      "gpioid": 9,
+      "top": 67.75510204081633,
+      "left": 27.857142857142858,
+      "valueJustify": -1
+    },
+    {
+      "gpioid": 10,
+      "top": 74.6938775510204,
+      "left": 27.857142857142858,
+      "valueJustify": -1
+    },
+    {
+      "gpioid": 0,
+      "top": 26.122448979591837,
+      "left": 72.14285714285714,
+      "valueJustify": 0
+    },
+    {
+      "gpioid": 1,
+      "top": 33.06122448979592,
+      "left": 72.14285714285714,
+      "valueJustify": 0
+    },
+    {
+      "gpioid": 2,
+      "top": 40.0,
+      "left": 72.14285714285714,
+      "valueJustify": 0
+    },
+    {
+      "gpioid": 21,
+      "top": 46.93877551020408,
+      "left": 72.14285714285714,
+      "valueJustify": 0
+    },
+    {
+      "gpioid": 20,
+      "top": 53.87755102040816,
+      "left": 72.14285714285714,
+      "valueJustify": 0
+    }
+  ],
+  "settings": {
+    "pinWidth": 4,
+    "pinHeight": 4,
+    "showPinNumber": true,
+    "valueMinWidth": 25,
+    "valuePinMargin": 4,
+    "valueFontSize": 2
+  }
+}

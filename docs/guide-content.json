@@ -1,0 +1,244 @@
+[
+  [
+    "overview",
+    "Project overview",
+    [
+      [
+        "Purpose and release boundary",
+        [
+          "GPIO Viewer for Mzansi Connect is an additional, read-only interface for the Zepkvor ZEK-03 ESP32-C3 development board with an integrated 0.42-inch OLED. It was requested as a comparison option before deciding whether to remove the existing GPIO Viewer. This release deliberately retains the original viewer, its server and sampling service. The new visual layout is based on the supplied product photograph rather than a generic ESP32-C3 SuperMini or DevKitM-1.",
+          "The integration is Mzansi firmware 2.2.6-c3-zek03-viewer, Android app 1.3.0 (versionCode 4), and custom viewer 1.0.0. The standalone repository contains the reusable viewer, generated board profile, integration instructions, tests and documentation. Device-specific Wi-Fi secrets and signing keys are excluded. The existing complete Mzansi project remains the place to build the configured device firmware and Android app."
+        ]
+      ],
+      [
+        "What this release provides",
+        [
+          "The new page has a photographed-layout purple-board SVG, selectable header pins, state highlighting, GPIO numbers, digital HIGH/LOW values, raw PWM/ADC values, declared-mode information, application assignments and capability notes. Power rails are displayed with separate styling and never presented as programmable GPIO or measured voltage channels. A generic pin list provides an alternative view.",
+          "Connection status, stale-data handling, automatic reconnect, manual reconnect, pause/resume and a rolling chart make the viewer useful during diagnosis. All device-page CSS, JavaScript, SVG and board metadata are embedded in one gzip-compressed asset. The new page therefore works without downloading GitHub Pages assets. The original upstream viewer still has its own remote-asset requirements."
+        ]
+      ],
+      [
+        "What is not being claimed",
+        [
+          "A sampled pin value is not an oscilloscope measurement. It cannot decode fast UART or SPI traffic at a 250 ms interval, establish GPS location validity, demonstrate radio ACKs, or prove RF range. A diagram matching the visible product layout is not a dimensioned manufacturing drawing. The OLED is represented visually but is not initialized by the viewer.",
+          "A professional result separates implementation evidence from physical verification. Browser fixtures prove UI behavior under controlled data; compilation proves the build fits and links; a real device check proves only the operations actually observed. The verification page records those categories separately rather than describing every feature as hardware-verified."
+        ]
+      ]
+    ]
+  ],
+  [
+    "setup",
+    "Installation and daily operation",
+    [
+      [
+        "Start from a recoverable device",
+        [
+          "Keep USB recovery available before any firmware update. Compile for the correct ESP32-C3 target, flash size, USB CDC setting and partition layout. The matching application .bin is the image for the dashboard OTA route; an Android APK, source .ino or merged flash image is not interchangeable with it. The existing NVS settings and version-history mechanism are retained.",
+          "After flashing or restarting, leave the device powered for two minutes. USB reappearance is not the same as completed startup. First check the main dashboard, the firmware version and saved settings; then check GPIO telemetry. If Wi-Fi is unavailable, use the recovery hotspot in normal mode. Do not repeatedly reboot during the startup window."
+        ]
+      ],
+      [
+        "Enable the shared telemetry service",
+        [
+          "Open Mzansi Dashboard, select GPIO Live, enable GPIO Viewer and save the settings. This existing feature switches the board to station-only diagnostic mode on restart. The recovery hotspot is temporarily disabled in that mode. Both viewer interfaces depend on this same service; selecting the new menu option does not silently enable it.",
+          "Wait another two minutes, then use the LAN IP on port 80 for Mzansi and port 8080 for the original GPIO Viewer. The existing 45-second disconnected-Wi-Fi failsafe disables diagnostic mode and restarts into recovery mode. It tests association state, not every possible failure of browser access, router routing or multicast discovery."
+        ]
+      ],
+      [
+        "Android flow and direct browser access",
+        [
+          "The required order remains IP address, dashboard mode, API key, then open. The mode menu contains Mzansi Dashboard, GPIO Viewer for Mzansi Connect, and the original GPIO Viewer. The new option opens http://DEVICE_IP/gpio-mzansi. The original remains http://DEVICE_IP:8080/. Enter the key configured for the device; this public guide does not distribute a household device key.",
+          "The Android app validates the key against /api/status before opening the chosen page. The new page uses the existing same-origin sessionStorage workflow; returning to the app menu clears stored browser data. Direct-browser users enter the IP and key in the viewer page. The password field is cleared after a successful connection. The session can be explicitly cleared with Disconnect."
+        ]
+      ],
+      [
+        "Using the controls",
+        [
+          "Click a pin hole or its table row, or use keyboard focus and Enter/Space. The inspector shows its physical side and position, GPIO alias where applicable, received value, declared mode, capability hints and current Mzansi assignment. The chart stores the last 60 display observations for the selected GPIO. With 500 ms chart collection this is about 30 seconds once filled; it is not the separate GPS history buffer.",
+          "Pause display freezes displayed GPIO values while the stream continues to send connection heartbeats. Resume opens a fresh stream so values changed during the pause are recovered through the upstream reset/snapshot behavior. Generic pin list hides the board drawing while preserving the table and inspector. Reconnect validates the device again; Disconnect closes the stream and removes the session key."
+        ]
+      ]
+    ]
+  ],
+  [
+    "hardware",
+    "Board identification and evidence",
+    [
+      [
+        "Read the drawing in the correct orientation",
+        [
+          "Look at the front, with the OLED facing you and USB-C downward. The purple rectangular PCB has eight through-hole header positions per side, RST at top-left and BOOT at top-right. The display occupies the upper-middle area; the USB-C shell projects below the PCB. The drawing includes the central top component, display flex area, small components, power indicator and IO8 user-LED markings visible in the photograph.",
+          "The supplied photograph is the authority for physical label order. From top to bottom, the left side is 3, 4, 5, 6, 7, 8, 9, 10. The right side is 0, 1, 2, TX, RX, 3V3, GND, 5V. The view is not mirrored. Digital GPIO numbers and rail names are stored separately so the renderer cannot accidentally turn 3V3 or 5V into live GPIO channels."
+        ]
+      ],
+      [
+        "TX and RX evidence",
+        [
+          "The current project receives readable GPS NMEA when GPS TXD is connected to the board RX-labelled header and the ESP32 UART listens on GPIO20 at 9600 baud. The project transmits on GPIO21 through the TX-labelled header. Espressif Arduino-ESP32 3.3.12 also defines the generic C3 TX/RX aliases as 21/20. Together these support the operational mapping used here.",
+          "A generic core alias alone does not prove a vendor header trace. No authoritative Zepkvor ZEK-03 schematic was found during this work. The board metadata explicitly describes TX=21 and RX=20 as project wiring/test evidence rather than manufacturer certification. If a different physical revision fails the same test, check its traces or obtain its exact schematic before changing the mapping."
+        ]
+      ],
+      [
+        "OLED internals: verified versus unknown",
+        [
+          "The listing and supplied product description identify a 0.42-inch integrated OLED. The photograph establishes its placement, not its controller or pixel matrix. For this exact ZEK-03, controller model, resolution, I2C SDA, I2C SCL, I2C address and shared external-header wiring are all recorded as unknown (null) in board.json.",
+          "A separate maintainer project documents GPIO5/6 OLED I2C on a similar mini C3 OLED board and explicitly warns that SPI and OLED I2C can conflict. That is useful research evidence for a hypothesis, not proof that the ZEK-03 is electrically identical. The current Mzansi radio already uses GPIO5 as MISO and GPIO6 as MOSI. Do not run an I2C scan or initialize a guessed display configuration over those active radio pins.",
+          "To resolve the uncertainty, obtain a schematic explicitly naming ZEK-03 and its revision, inspect continuity on an unpowered board with attached modules disconnected, then test an isolated display sketch using the verified pins. An I2C acknowledgement can establish that something responds at an address; it does not by itself identify the controller or pixel resolution. Update the metadata only with the resulting evidence."
+        ]
+      ],
+      [
+        "Electrical and capability notes",
+        [
+          "ESP32-C3 GPIO uses 3.3 V logic. The 5V header is a supply rail, not permission to drive a GPIO with 5 V. Power and ground entries in this viewer do not measure their voltage. Use an appropriate meter for supply checks. The nRF24 PA/LNA needs a stable regulated 3.3 V supply, shared ground and local decoupling; digital activity alone does not establish adequate power.",
+          "GPIO2, GPIO8 and GPIO9 are C3 strapping pins, sampled during reset. External loads must preserve valid boot levels. GPIO0-4 have ADC1 capability; GPIO5 is associated with ADC2 and C3-specific restrictions. Capability hints describe silicon facilities, not a guarantee that the current application has configured or can safely repurpose that function. The viewer does not offer output toggles."
+        ]
+      ]
+    ]
+  ],
+  [
+    "architecture",
+    "Architecture and live protocol",
+    [
+      [
+        "Why there are two interfaces",
+        [
+          "The workspace is an Arduino-ESP32 firmware project with an embedded synchronous WebServer dashboard and an Android Java WebView app. It did not contain the complete upstream Vue development repository. The installed GPIOViewer 1.7.1 library serves port 8080 and normally loads its web application and board assets from the upstream GitHub Pages site. The upstream registry is boards.json with image and indicator-file paths; indicator files position GPIO IDs over a board image.",
+          "The new implementation keeps that service intact. Mzansi serves /gpio-mzansi on port 80 as a compressed PROGMEM byte array. The browser reads existing endpoints on the same host at port 8080. The repository also provides boards.json and zek-03-indicators.json in the upstream registration schema, but it does not claim to have changed the upstream public board menu. A separate upstream contribution would require its maintainers to accept those assets."
+        ]
+      ],
+      [
+        "The wire contract",
+        [
+          "The browser opens EventSource at http://HOST:8080/events. A gpio-state event contains a JSON object keyed by GPIO number. Each value has s, v and t. For example, {\"3\":{\"s\":256,\"v\":1,\"t\":0}} means GPIO3 was sampled digital HIGH. Type t=0 is digital, t=1 is PWM, t=2 is ADC. The original raw value v is displayed; s is the library visualization value and is not a voltage.",
+          "Frames are deltas: only changed pins may be present. applyFrame validates numeric fields, ignores malformed entries and merges into the existing cache. Replacing the entire cache with each frame would incorrectly erase unchanged GPIO values. The upstream library resets its state cache when a stream client connects, causing the next sample to repopulate values. The new viewer clears its display cache on opening a fresh stream so old values are not presented as new observations.",
+          "The free_heap event carries formatted heap text and also provides an idle heartbeat. /pinmodes returns declared pin/mode entries; modes are shown when available, otherwise Not declared. These declarations are bookkeeping, not a full hardware peripheral-mux decoder. In the current firmware, the bridge declares active UART/SPI/buzzer/LED pins without reapplying pinMode to already running peripherals."
+        ]
+      ],
+      [
+        "Staleness, reconnection and chart semantics",
+        [
+          "On an EventSource error, the connection is closed, current GPIO display becomes stale, and an automatic reconnect is scheduled after 2.5 seconds. A six-second heartbeat gap also marks values stale. A reconnect generation number prevents obsolete asynchronous requests from updating a newer connection. The page closes its source and timers when leaving or disconnecting.",
+          "The chart samples the latest received cache every 500 ms while not paused. Values can repeat because the GPIO has not changed. A digital trace is normalized to LOW/HIGH; ADC and PWM traces are scaled to the selected recent maximum. This is a display of sampled observations, not a uniformly timed electrical acquisition. Browser delays, Wi-Fi congestion and the firmware sampler all affect it."
+        ]
+      ],
+      [
+        "Backend limitations inherited from upstream",
+        [
+          "GPIOViewer 1.7.1 polls GPIOs and may infer analog/PWM type. Its core-3 ADC path can classify a zero ADC reading as digital LOW because it only chooses analog when the reading is nonzero. This UI displays the reported type honestly and cannot recover an unreported analog zero classification. Declared output/input modes are not the same as actual peripheral function or packet content.",
+          "Both interfaces share the existing sampling workload. The new UI does not add another GPIO task or change the sampling interval. Multiple simultaneous EventSource clients still add sockets and delivery overhead; use one viewer at a time on a constrained board when comparing. An upstream client connection can reset the shared library state cache and cause a refresh in other clients."
+        ]
+      ]
+    ]
+  ],
+  [
+    "led",
+    "Onboard network status LED",
+    [
+      [
+        "Pattern meanings",
+        [
+          "Home Wi-Fi connected: two short pulses, 160 ms on, 180 ms off, 160 ms on, then off for the remainder of an eight-second cycle. The double pattern starts immediately after a state transition is processed. Repeating it makes the current network state visible without requiring someone to watch the exact moment of connection.",
+          "Home Wi-Fi unavailable with the recovery hotspot active: a long 1,800 ms pulse followed by 1,200 ms off, repeating. During the initial connection window the LED remains off; the fallback pattern is used when the startup connection window has elapsed or no home password is configured and an AP is actually running. In station-only diagnostic mode, the long hotspot pattern cannot appear until the existing recovery restart restores the AP."
+        ]
+      ],
+      [
+        "Implementation and electrical assumptions",
+        [
+          "The photo shows an IO8 marking beside a user indicator. This supports selecting physical GPIO8; the firmware does not use LED_BUILTIN because the generic C3 variant defines a synthetic addressable-RGB alias. The LED is initialized after boot and its state is updated from a pure timing function in network_led.h. GPIO8 is also registered as OUTPUT in the viewer bridge so it is not treated as an unassigned analog input.",
+          "Active-low behavior is an explicit assumption for this board revision pending a visual hardware check. NETWORK_LED_ACTIVE_LOW controls it in one place. If the flashes are inverted or the indicator is almost continuously lit, verify polarity on the actual board and change that constant. Neither the product photo nor software readback can prove LED polarity or physical illumination. The always-powered PWR indicator cannot generally be blinked by firmware."
+        ]
+      ],
+      [
+        "Non-blocking operation and what connection means",
+        [
+          "No delay calls are used for the pattern. Unsigned elapsed time and modulo arithmetic determine the phase, and GPIO8 is updated during the normal loop. The header includes compile-time assertions at timing boundaries. GPS parsing, radio work and dashboard servicing continue while a pattern is in progress, although an already-blocking operation elsewhere in the application can still delay loop updates.",
+          "The double flash indicates the ESP32 is associated with home Wi-Fi. It does not prove Internet connectivity, a phone is connected to the same network, or the Android app is open. The long flash indicates a recovery AP is configured and running, not that a phone has joined it. The existing same-Wi-Fi IP notification service remains separate and continues to use discovery and boot identifiers."
+        ]
+      ]
+    ]
+  ],
+  [
+    "security",
+    "Network and security model",
+    [
+      [
+        "Where the key helps",
+        [
+          "The new page checks the supplied device API key using /api/status on the main server before opening live monitoring. The key is sent in the existing X-Device-Key header, never in a URL. The Android integration validates the same key before loading the page. The reusable repository and hosted demo contain no configured household device key.",
+          "This check is not end-to-end telemetry authentication. GPIOViewer 1.7.1 independently serves /events and metadata on port 8080 with permissive CORS and no API-key check. Anyone who can reach that service can access it directly. The main HTTP connection also lacks TLS, so the application key does not provide confidentiality against an observer on the network."
+        ]
+      ],
+      [
+        "Session and publishing boundaries",
+        [
+          "The browser retains the key in sessionStorage for the current device origin. Disconnect deletes it. The Android menu return clears WebStorage and uses no native JavaScript bridge. These are useful session hygiene measures, not substitutes for a stronger transport/authentication design. Device-origin scripts can access sessionStorage, so it must remain free of injected or untrusted content.",
+          "The public GitHub Pages site is documentation plus an explicitly labelled simulated demo. It does not run a device proxy, collect credentials or contact an ESP32. Use the page served over local HTTP by the board for live monitoring. Loading a public HTTPS page and trying to contact private HTTP hardware encounters browser mixed-content, private-network and CORS boundaries; the demo is not advertised as bypassing them."
+        ]
+      ],
+      [
+        "Operational precautions",
+        [
+          "Use diagnostic mode on a trusted local network, then disable it when finished. Do not forward port 8080 from the router to the Internet. Keep the original viewer available for comparison and USB available for recovery. If stronger security is later required, authenticate the telemetry backend itself and design transport/session handling together; placing a password form in front of an open stream cannot accomplish that."
+        ]
+      ]
+    ]
+  ],
+  [
+    "development",
+    "Source map, builds and extending support",
+    [
+      [
+        "Source responsibilities",
+        [
+          "web/template.html contains the handwritten UI and connection lifecycle. web/telemetry.js implements the small pure delta parser and value formatter. tools/build_assets.py is the single source of physical pin positions, board metadata and SVG construction; it embeds the page and emits deterministic gzip bytes. web/index.html, web/board.json and web/zek-03.svg are generated outputs, not independent sources to edit.",
+          "boards.json and zek-03-indicators.json mirror the upstream registry/overlay format for reuse. integration.md explains the Mzansi WebServer route and Android mode changes. integration/network_led.h contains the timing function. tests/telemetry.test.js tests malformed inputs and delta semantics. tests/browser.test.cjs drives a real browser against controlled device fixtures and captures desktop/mobile screenshots."
+        ]
+      ],
+      [
+        "Repeatable build sequence",
+        [
+          "Run python tools/build_assets.py from the standalone repository or its parent workspace. It creates integration/mzansi_gpio_html.h; when the neighboring main Mzansi sketch exists, it also updates that sketch header. Run node tests/telemetry.test.js for protocol checks. Install the pinned npm development dependency and run npm run test:browser for the browser fixture suite. A Windows Edge installation is used by the current test runner; the documented BROWSER_PATH override supports another installed Chromium executable.",
+          "For the full Mzansi workspace, compile the main sketch with ESP32 core 3.3.12 and the esp32:esp32:esp32c3:CDCOnBoot=cdc target. Keep GPIOViewer 1.7.1 pinned, along with the installed AsyncTCP and ESPAsyncWebServer versions. The bridge deliberately isolates their async headers from the synchronous WebServer. The generated asset is compressed to conserve the already limited application partition headroom.",
+          "Android is built from Android/MzansiConnect using its Gradle wrapper. App 1.3.0 retains SDK 34 targeting, minimum SDK 26 and the existing discovery service. Run assembleDebug and lintDebug; a debug-signed APK is for direct installation, not a Play Store production release. Preserve signing continuity when updating an installed app."
+        ]
+      ],
+      [
+        "Adding evidence or another board",
+        [
+          "Change physical pin order only in the builder after checking the correct orientation against board-specific evidence. Keep stable physical IDs (side and position), displayed labels and numeric GPIO IDs distinct. Set GPIO to null for supply rails. If a TX/RX alias is unknown, preserve the printed alias and omit a numeric assignment until verified rather than showing a convincing but unsupported value.",
+          "When OLED wiring is established for an exact revision, record controller, resolution, SDA, SCL, address, shared headers, source and verification method. Plan conflicts with the radio before adding display initialization. A board-specific configuration should be data driven and should never silently borrow defaults from a visually similar board. Rebuild assets, run the protocol and browser checks, then verify the affected path on hardware."
+        ]
+      ]
+    ]
+  ],
+  [
+    "troubleshooting",
+    "Troubleshooting and acceptance",
+    [
+      [
+        "Find the failing layer",
+        [
+          "No new menu option: verify Android app 1.3.0 and firmware 2.2.6 are actually installed; a successful local build does not update a device by itself. A 404 at /gpio-mzansi usually means older firmware or the wrong host/port. The new page is on port 80; the original is on 8080. Check version history and wait the full startup window after installing.",
+          "The new page opens but says the service is off: enable GPIO Live in Mzansi Dashboard and allow the required restart. If diagnostic mode immediately disappears, inspect home Wi-Fi association and the 45-second recovery fallback. If the original viewer works but the new one fails, inspect /api/status authorization, browser console and the local route; if both streams fail, start with the shared port 8080 service and network reachability.",
+          "Values are stale or reconnecting: inspect Wi-Fi strength, router client isolation and the exact IP. Stale display is preferable to showing an old value as current. Heap text but few GPIO updates can simply mean the pins are unchanged because frames carry deltas. Not declared means mode metadata was unavailable; it does not mean the pin cannot function."
+        ]
+      ],
+      [
+        "Interpret signals correctly",
+        [
+          "A UART RX pin may look HIGH most of the time because UART idles HIGH and 250 ms sampling misses short bit periods. Fast SPI also cannot be decoded from this display. If GPS has zero bytes, check GPS TXD to the RX-labelled header/GPIO20, common ground, power and baud. If NMEA arrives but there is no fix, inspect sky view and navigation validity rather than changing a proven UART mapping.",
+          "If the nRF24 is not detected, investigate its regulated supply, connector orientation, CSN/CE mapping and SPI wiring. A toggling SCK is not proof the radio answered. Do not initialize guessed OLED I2C pins on top of the active SPI bus. If a power rail is selected, the inspector correctly says it is not measured; use a meter.",
+          "If the network LED does not look as described, distinguish the power LED from the IO8 user LED. Verify the board revision and active level. A software HIGH or LOW observed on GPIO8 can confirm the requested output waveform but cannot verify that an actual LED lights. A long pulse should appear only in recovery-AP state; station-only mode has no active AP until recovery is restored."
+        ]
+      ],
+      [
+        "Acceptance checklist before removing the original",
+        [
+          "Confirm the physical pin drawing against the supplied photo and check all 16 external labels. Open each of the three Android modes. Check API-key rejection, enabled/disabled service messaging, and direct browser sign-in. Compare the new view with the original on the same device without assuming exact frame timing across two concurrent clients.",
+          "Select a real configured output such as the onboard status LED and verify the reported mode/value. Test a known LOW and HIGH condition without shorting outputs or touching active SPI/UART pins. Disconnect and restore Wi-Fi to confirm stale state and reconnect. Pause and resume after a value changes, and confirm the refreshed value. Check phone portrait layout, keyboard selection and power-rail treatment.",
+          "After flashing, verify the reported firmware version, one new version-history entry, retained settings and ongoing GPS parsing. Confirm the IP notification watcher still reports a new boot. Observe the LED physically for connected and fallback patterns. Only then decide whether the new viewer satisfies daily use; keeping the original for comparison is part of this release, not an unfinished removal."
+        ]
+      ]
+    ]
+  ]
+]

@@ -1,0 +1,7 @@
+{
+  "name": "gpio-viewer-for-mzansi-connect",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {"test": "node tests/telemetry.test.js", "test:browser": "node tests/browser.test.cjs", "build": "python tools/build_assets.py"},
+  "devDependencies": {"playwright": "1.65.1"}
+}

@@ -1,0 +1,7 @@
+[
+  {
+    "name": "Zepkvor ZEK-03 \u00b7 ESP32-C3 OLED",
+    "image": "web/zek-03.svg",
+    "pins": "zek-03-indicators.json"
+  }
+]

@@ -1,0 +1,178 @@
+{
+  "id": "zepkvor-zek-03",
+  "name": "Zepkvor ZEK-03 \u00b7 ESP32-C3 OLED",
+  "orientation": "Front; USB-C down",
+  "pins": [
+    {
+      "id": "left-1",
+      "side": "left",
+      "position": 1,
+      "label": "3",
+      "gpio": 3,
+      "kind": "gpio",
+      "x": 156,
+      "y": 128
+    },
+    {
+      "id": "left-2",
+      "side": "left",
+      "position": 2,
+      "label": "4",
+      "gpio": 4,
+      "kind": "gpio",
+      "x": 156,
+      "y": 162
+    },
+    {
+      "id": "left-3",
+      "side": "left",
+      "position": 3,
+      "label": "5",
+      "gpio": 5,
+      "kind": "gpio",
+      "x": 156,
+      "y": 196
+    },
+    {
+      "id": "left-4",
+      "side": "left",
+      "position": 4,
+      "label": "6",
+      "gpio": 6,
+      "kind": "gpio",
+      "x": 156,
+      "y": 230
+    },
+    {
+      "id": "left-5",
+      "side": "left",
+      "position": 5,
+      "label": "7",
+      "gpio": 7,
+      "kind": "gpio",
+      "x": 156,
+      "y": 264
+    },
+    {
+      "id": "left-6",
+      "side": "left",
+      "position": 6,
+      "label": "8",
+      "gpio": 8,
+      "kind": "gpio",
+      "x": 156,
+      "y": 298
+    },
+    {
+      "id": "left-7",
+      "side": "left",
+      "position": 7,
+      "label": "9",
+      "gpio": 9,
+      "kind": "gpio",
+      "x": 156,
+      "y": 332
+    },
+    {
+      "id": "left-8",
+      "side": "left",
+      "position": 8,
+      "label": "10",
+      "gpio": 10,
+      "kind": "gpio",
+      "x": 156,
+      "y": 366
+    },
+    {
+      "id": "right-1",
+      "side": "right",
+      "position": 1,
+      "label": "0",
+      "gpio": 0,
+      "kind": "gpio",
+      "x": 404,
+      "y": 128
+    },
+    {
+      "id": "right-2",
+      "side": "right",
+      "position": 2,
+      "label": "1",
+      "gpio": 1,
+      "kind": "gpio",
+      "x": 404,
+      "y": 162
+    },
+    {
+      "id": "right-3",
+      "side": "right",
+      "position": 3,
+      "label": "2",
+      "gpio": 2,
+      "kind": "gpio",
+      "x": 404,
+      "y": 196
+    },
+    {
+      "id": "right-4",
+      "side": "right",
+      "position": 4,
+      "label": "TX",
+      "gpio": 21,
+      "kind": "gpio",
+      "x": 404,
+      "y": 230
+    },
+    {
+      "id": "right-5",
+      "side": "right",
+      "position": 5,
+      "label": "RX",
+      "gpio": 20,
+      "kind": "gpio",
+      "x": 404,
+      "y": 264
+    },
+    {
+      "id": "right-6",
+      "side": "right",
+      "position": 6,
+      "label": "3V3",
+      "gpio": null,
+      "kind": "power",
+      "x": 404,
+      "y": 298
+    },
+    {
+      "id": "right-7",
+      "side": "right",
+      "position": 7,
+      "label": "GND",
+      "gpio": null,
+      "kind": "ground",
+      "x": 404,
+      "y": 332
+    },
+    {
+      "id": "right-8",
+      "side": "right",
+      "position": 8,
+      "label": "5V",
+      "gpio": null,
+      "kind": "power",
+      "x": 404,
+      "y": 366
+    }
+  ],
+  "oled": {
+    "controller": null,
+    "resolution": null,
+    "sda": null,
+    "scl": null,
+    "address": null,
+    "sharedHeaderPins": null,
+    "verification": "Unverified on ZEK-03"
+  },
+  "uartEvidence": "TX=GPIO21 / RX=GPIO20: project UART wiring and recorded NMEA test; no Zepkvor schematic found.",
+  "imageEvidence": "User-supplied product photo, 17 November 2026; physical order confirmed visually. Dimensions are illustrative, not a manufacturing drawing."
+}

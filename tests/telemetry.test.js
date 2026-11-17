@@ -1,0 +1,15 @@
+const assert=require('node:assert/strict');
+const {applyFrame,describeValue}=require('../web/telemetry.js');
+const c={};
+assert.deepEqual(applyFrame(c,{'3':{s:256,v:1,t:0},'20':{s:0,v:0,t:0}}),[3,20]);
+assert.equal(describeValue(c[3]),'HIGH');
+applyFrame(c,{'20':{s:256,v:1,t:0}});
+assert.equal(c[3].v,1,'delta does not erase unchanged pins');
+assert.equal(describeValue(c[20]),'HIGH');
+applyFrame(c,{'3':{s:0,v:0,t:0}});assert.equal(describeValue(c[3]),'LOW');
+assert.equal(describeValue({s:128,v:2048,t:2}),'ADC 2048');
+assert.equal(describeValue({s:128,v:127,t:1}),'PWM 127');
+assert.equal(describeValue(undefined),'WAITING');
+assert.deepEqual(applyFrame(c,{'3':{s:'0',v:0,t:0},'x':{s:0,v:0,t:0},'5':null,'6':{s:0,v:0,t:9}}),[]);
+assert.deepEqual(applyFrame(c,null),[]);assert.deepEqual(applyFrame(c,[]),[]);
+console.log('PASS: GPIOViewer delta merge, digital/PWM/ADC values, malformed input');

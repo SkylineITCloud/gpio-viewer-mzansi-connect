@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 490" role="img" aria-labelledby="boardTitle boardDesc">
+<title id="boardTitle">Zepkvor ZEK-03 front view</title><desc id="boardDesc">Purple board, reset and boot at top, OLED in centre, USB-C at bottom, eight pins per side.</desc>
+<defs><linearGradient id="pcb" x2="1" y2="1"><stop stop-color="#61357c"/><stop offset="1" stop-color="#301846"/></linearGradient><linearGradient id="metal" x2="1" y2="1"><stop stop-color="#f5f4eb"/><stop offset=".45" stop-color="#919da8"/><stop offset="1" stop-color="#d9e0e4"/></linearGradient></defs>
+<rect x="140" y="56" width="280" height="344" rx="14" fill="url(#pcb)" stroke="#9c70af" stroke-width="2"/>
+<g fill="#d2d5d7" stroke="#818b95"><rect x="159" y="62" width="64" height="36" rx="4"/><rect x="337" y="62" width="64" height="36" rx="4"/></g>
+<g fill="#69717b" stroke="#3a414a" stroke-width="2"><circle cx="191" cy="80" r="12"/><circle cx="369" cy="80" r="12"/></g>
+<rect x="254" y="65" width="48" height="28" rx="3" fill="#ddd"/><rect x="260" y="69" width="36" height="20" fill="#c12638"/><rect x="272" y="75" width="12" height="7" fill="#efc2b8"/>
+<g font-family="system-ui,sans-serif" fill="#e4d9eb" font-size="12"><text x="230" y="92" transform="rotate(-90 230 92)">RST</text><text x="330" y="94" transform="rotate(-90 330 94)">BOOT</text></g>
+<rect x="190" y="112" width="10" height="17" rx="2" fill="#bbb7a5"/><rect x="192" y="116" width="6" height="9" fill="#3b3a40"/>
+<rect x="208" y="112" width="10" height="17" rx="2" fill="#bbb7a5"/><rect x="210" y="116" width="6" height="9" fill="#3b3a40"/>
+<rect x="226" y="112" width="10" height="17" rx="2" fill="#bbb7a5"/><rect x="228" y="116" width="6" height="9" fill="#3b3a40"/>
+<rect x="244" y="112" width="10" height="17" rx="2" fill="#bbb7a5"/><rect x="246" y="116" width="6" height="9" fill="#3b3a40"/>
+<rect x="262" y="112" width="10" height="17" rx="2" fill="#bbb7a5"/><rect x="264" y="116" width="6" height="9" fill="#3b3a40"/>
+<rect x="280" y="112" width="10" height="17" rx="2" fill="#bbb7a5"/><rect x="282" y="116" width="6" height="9" fill="#3b3a40"/>
+<rect x="298" y="112" width="10" height="17" rx="2" fill="#bbb7a5"/><rect x="300" y="116" width="6" height="9" fill="#3b3a40"/>
+<rect x="316" y="112" width="10" height="17" rx="2" fill="#bbb7a5"/><rect x="318" y="116" width="6" height="9" fill="#3b3a40"/>
+<rect x="334" y="112" width="10" height="17" rx="2" fill="#bbb7a5"/><rect x="336" y="116" width="6" height="9" fill="#3b3a40"/>
+<rect x="352" y="112" width="10" height="17" rx="2" fill="#bbb7a5"/><rect x="354" y="116" width="6" height="9" fill="#3b3a40"/>
+<rect x="193" y="137" width="174" height="170" fill="#aaa9a5" stroke="#d5d2d0" stroke-width="3"/>
+<rect x="201" y="145" width="158" height="103" fill="#1c1b26"/><rect x="208" y="152" width="144" height="90" fill="#302345"/><rect x="209" y="249" width="142" height="48" fill="#7b7d79"/>
+<path d="M210 299 L230 299 L237 321 L218 321Z M328 299 L348 299 L340 321 L321 321Z" fill="#bd8d3e"/><rect x="232" y="308" width="90" height="24" fill="#171c25"/>
+<g fill="#c7cdd2"><rect x="211" y="327" width="138" height="42" rx="6"/><rect x="219" y="338" width="122" height="88" rx="7" fill="url(#metal)" stroke="#6c7783" stroke-width="3"/><rect x="231" y="405" width="98" height="13" rx="5" fill="#27323b"/></g>
+<rect x="184" y="347" width="9" height="24" rx="2" fill="#dae8d2"/><rect x="367" y="347" width="9" height="24" rx="2" fill="#dae8d2"/><text x="191" y="337" transform="rotate(-90 191 337)" fill="#eee0ef" font-size="10">PWR</text><text x="374" y="337" transform="rotate(-90 374 337)" fill="#eee0ef" font-size="10">IO8</text>
+<text x="280" y="463" text-anchor="middle" fill="#a5b1c3" font-size="13" font-family="system-ui">ZEK-03 · front · USB-C down</text>
+<g id="left-1" class="pin gpio" data-pin="left-1" tabindex="0" role="button" aria-label="3"><title>3: programmable GPIO</title>
+<rect x="142" y="114" width="28" height="28" fill="transparent" pointer-events="all"/>
+<circle class="ring" cx="156" cy="128" r="9" fill="#171221" stroke="#cdb986" stroke-width="4"/><circle class="live" cx="156" cy="128" r="5" fill="#74657c"/>
+<text x="176" y="133" text-anchor="start" fill="#eee0ef" font-family="system-ui" font-size="14">3</text>
+<text class="pin-state" x="25" y="132" fill="#a5b1c3" font-family="system-ui" font-size="12">—</text></g>
+<g id="left-2" class="pin gpio" data-pin="left-2" tabindex="0" role="button" aria-label="4"><title>4: programmable GPIO</title>
+<rect x="142" y="148" width="28" height="28" fill="transparent" pointer-events="all"/>
+<circle class="ring" cx="156" cy="162" r="9" fill="#171221" stroke="#cdb986" stroke-width="4"/><circle class="live" cx="156" cy="162" r="5" fill="#74657c"/>
+<text x="176" y="167" text-anchor="start" fill="#eee0ef" font-family="system-ui" font-size="14">4</text>
+<text class="pin-state" x="25" y="166" fill="#a5b1c3" font-family="system-ui" font-size="12">—</text></g>
+<g id="left-3" class="pin gpio" data-pin="left-3" tabindex="0" role="button" aria-label="5"><title>5: programmable GPIO</title>
+<rect x="142" y="182" width="28" height="28" fill="transparent" pointer-events="all"/>
+<circle class="ring" cx="156" cy="196" r="9" fill="#171221" stroke="#cdb986" stroke-width="4"/><circle class="live" cx="156" cy="196" r="5" fill="#74657c"/>
+<text x="176" y="201" text-anchor="start" fill="#eee0ef" font-family="system-ui" font-size="14">5</text>
+<text class="pin-state" x="25" y="200" fill="#a5b1c3" font-family="system-ui" font-size="12">—</text></g>
+<g id="left-4" class="pin gpio" data-pin="left-4" tabindex="0" role="button" aria-label="6"><title>6: programmable GPIO</title>
+<rect x="142" y="216" width="28" height="28" fill="transparent" pointer-events="all"/>
+<circle class="ring" cx="156" cy="230" r="9" fill="#171221" stroke="#cdb986" stroke-width="4"/><circle class="live" cx="156" cy="230" r="5" fill="#74657c"/>
+<text x="176" y="235" text-anchor="start" fill="#eee0ef" font-family="system-ui" font-size="14">6</text>
+<text class="pin-state" x="25" y="234" fill="#a5b1c3" font-family="system-ui" font-size="12">—</text></g>
+<g id="left-5" class="pin gpio" data-pin="left-5" tabindex="0" role="button" aria-label="7"><title>7: programmable GPIO</title>
+<rect x="142" y="250" width="28" height="28" fill="transparent" pointer-events="all"/>
+<circle class="ring" cx="156" cy="264" r="9" fill="#171221" stroke="#cdb986" stroke-width="4"/><circle class="live" cx="156" cy="264" r="5" fill="#74657c"/>
+<text x="176" y="269" text-anchor="start" fill="#eee0ef" font-family="system-ui" font-size="14">7</text>
+<text class="pin-state" x="25" y="268" fill="#a5b1c3" font-family="system-ui" font-size="12">—</text></g>
+<g id="left-6" class="pin gpio" data-pin="left-6" tabindex="0" role="button" aria-label="8"><title>8: programmable GPIO</title>
+<rect x="142" y="284" width="28" height="28" fill="transparent" pointer-events="all"/>
+<circle class="ring" cx="156" cy="298" r="9" fill="#171221" stroke="#cdb986" stroke-width="4"/><circle class="live" cx="156" cy="298" r="5" fill="#74657c"/>
+<text x="176" y="303" text-anchor="start" fill="#eee0ef" font-family="system-ui" font-size="14">8</text>
+<text class="pin-state" x="25" y="302" fill="#a5b1c3" font-family="system-ui" font-size="12">—</text></g>
+<g id="left-7" class="pin gpio" data-pin="left-7" tabindex="0" role="button" aria-label="9"><title>9: programmable GPIO</title>
+<rect x="142" y="318" width="28" height="28" fill="transparent" pointer-events="all"/>
+<circle class="ring" cx="156" cy="332" r="9" fill="#171221" stroke="#cdb986" stroke-width="4"/><circle class="live" cx="156" cy="332" r="5" fill="#74657c"/>
+<text x="176" y="337" text-anchor="start" fill="#eee0ef" font-family="system-ui" font-size="14">9</text>
+<text class="pin-state" x="25" y="336" fill="#a5b1c3" font-family="system-ui" font-size="12">—</text></g>
+<g id="left-8" class="pin gpio" data-pin="left-8" tabindex="0" role="button" aria-label="10"><title>10: programmable GPIO</title>
+<rect x="142" y="352" width="28" height="28" fill="transparent" pointer-events="all"/>
+<rect x="146" y="356" width="20" height="20" fill="#cdb986"/>
+<circle class="ring" cx="156" cy="366" r="9" fill="#171221" stroke="#cdb986" stroke-width="4"/><circle class="live" cx="156" cy="366" r="5" fill="#74657c"/>
+<text x="176" y="371" text-anchor="start" fill="#eee0ef" font-family="system-ui" font-size="14">10</text>
+<text class="pin-state" x="25" y="370" fill="#a5b1c3" font-family="system-ui" font-size="12">—</text></g>
+<g id="right-1" class="pin gpio" data-pin="right-1" tabindex="0" role="button" aria-label="0"><title>0: programmable GPIO</title>
+<rect x="390" y="114" width="28" height="28" fill="transparent" pointer-events="all"/>
+<circle class="ring" cx="404" cy="128" r="9" fill="#171221" stroke="#cdb986" stroke-width="4"/><circle class="live" cx="404" cy="128" r="5" fill="#74657c"/>
+<text x="384" y="133" text-anchor="end" fill="#eee0ef" font-family="system-ui" font-size="14">0</text>
+<text class="pin-state" x="435" y="132" fill="#a5b1c3" font-family="system-ui" font-size="12">—</text></g>
+<g id="right-2" class="pin gpio" data-pin="right-2" tabindex="0" role="button" aria-label="1"><title>1: programmable GPIO</title>
+<rect x="390" y="148" width="28" height="28" fill="transparent" pointer-events="all"/>
+<circle class="ring" cx="404" cy="162" r="9" fill="#171221" stroke="#cdb986" stroke-width="4"/><circle class="live" cx="404" cy="162" r="5" fill="#74657c"/>
+<text x="384" y="167" text-anchor="end" fill="#eee0ef" font-family="system-ui" font-size="14">1</text>
+<text class="pin-state" x="435" y="166" fill="#a5b1c3" font-family="system-ui" font-size="12">—</text></g>
+<g id="right-3" class="pin gpio" data-pin="right-3" tabindex="0" role="button" aria-label="2"><title>2: programmable GPIO</title>
+<rect x="390" y="182" width="28" height="28" fill="transparent" pointer-events="all"/>
+<circle class="ring" cx="404" cy="196" r="9" fill="#171221" stroke="#cdb986" stroke-width="4"/><circle class="live" cx="404" cy="196" r="5" fill="#74657c"/>
+<text x="384" y="201" text-anchor="end" fill="#eee0ef" font-family="system-ui" font-size="14">2</text>
+<text class="pin-state" x="435" y="200" fill="#a5b1c3" font-family="system-ui" font-size="12">—</text></g>
+<g id="right-4" class="pin gpio" data-pin="right-4" tabindex="0" role="button" aria-label="TX"><title>TX: programmable GPIO</title>
+<rect x="390" y="216" width="28" height="28" fill="transparent" pointer-events="all"/>
+<circle class="ring" cx="404" cy="230" r="9" fill="#171221" stroke="#cdb986" stroke-width="4"/><circle class="live" cx="404" cy="230" r="5" fill="#74657c"/>
+<text x="384" y="235" text-anchor="end" fill="#eee0ef" font-family="system-ui" font-size="14">TX</text>
+<text class="pin-state" x="435" y="234" fill="#a5b1c3" font-family="system-ui" font-size="12">—</text></g>
+<g id="right-5" class="pin gpio" data-pin="right-5" tabindex="0" role="button" aria-label="RX"><title>RX: programmable GPIO</title>
+<rect x="390" y="250" width="28" height="28" fill="transparent" pointer-events="all"/>
+<circle class="ring" cx="404" cy="264" r="9" fill="#171221" stroke="#cdb986" stroke-width="4"/><circle class="live" cx="404" cy="264" r="5" fill="#74657c"/>
+<text x="384" y="269" text-anchor="end" fill="#eee0ef" font-family="system-ui" font-size="14">RX</text>
+<text class="pin-state" x="435" y="268" fill="#a5b1c3" font-family="system-ui" font-size="12">—</text></g>
+<g id="right-6" class="pin power" data-pin="right-6" tabindex="0" role="button" aria-label="3V3"><title>3V3: supply rail; not a GPIO</title>
+<rect x="390" y="284" width="28" height="28" fill="transparent" pointer-events="all"/>
+<circle class="ring" cx="404" cy="298" r="9" fill="#171221" stroke="#faaf70" stroke-width="4"/><circle class="live" cx="404" cy="298" r="5" fill="#74657c"/>
+<text x="384" y="303" text-anchor="end" fill="#eee0ef" font-family="system-ui" font-size="14">3V3</text>
+<text class="pin-state" x="435" y="302" fill="#a5b1c3" font-family="system-ui" font-size="12">3V3</text></g>
+<g id="right-7" class="pin ground" data-pin="right-7" tabindex="0" role="button" aria-label="GND"><title>GND: supply rail; not a GPIO</title>
+<rect x="390" y="318" width="28" height="28" fill="transparent" pointer-events="all"/>
+<circle class="ring" cx="404" cy="332" r="9" fill="#171221" stroke="#9aabbf" stroke-width="4"/><circle class="live" cx="404" cy="332" r="5" fill="#74657c"/>
+<text x="384" y="337" text-anchor="end" fill="#eee0ef" font-family="system-ui" font-size="14">GND</text>
+<text class="pin-state" x="435" y="336" fill="#a5b1c3" font-family="system-ui" font-size="12">GND</text></g>
+<g id="right-8" class="pin power" data-pin="right-8" tabindex="0" role="button" aria-label="5V"><title>5V: supply rail; not a GPIO</title>
+<rect x="390" y="352" width="28" height="28" fill="transparent" pointer-events="all"/>
+<rect x="394" y="356" width="20" height="20" fill="#faaf70"/>
+<circle class="ring" cx="404" cy="366" r="9" fill="#171221" stroke="#faaf70" stroke-width="4"/><circle class="live" cx="404" cy="366" r="5" fill="#74657c"/>
+<text x="384" y="371" text-anchor="end" fill="#eee0ef" font-family="system-ui" font-size="14">5V</text>
+<text class="pin-state" x="435" y="370" fill="#a5b1c3" font-family="system-ui" font-size="12">5V</text></g>
+</svg>
